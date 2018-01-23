@@ -1,4 +1,7 @@
 
-./index.early.js
-./callback.js
-./build.js
+index.early.js
+callback.js
+build.js
+.DS_Store
+.idea
+/test
