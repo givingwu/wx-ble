@@ -16,25 +16,39 @@
 + 支持`wx.method.paramter.success`方法的 `promisify`
 
 
-## Installation
+## Usage
 
 1. npm:
 
 ```
- npm install wx-ble
+npm install wx-ble
 ```
 
-2. 直接下载项目后，在页面引入
+then
 
 ```
-import Bluebooth from 'yourRelativePath/bluetooth/main.js'
+import Bluetooth from 'wx-ble'
+```
+
+2. 直接下载项目后，在页面引入。**建议将项目放在 `utils` or `vendors` 目录下，并新建名为`bluetooth`的目录后，将文件下载到该目录中**:
+
+```
+cd yourpoject/utils
+mkdir bluetooth
+git clone https://github.com/GivingWu/wx-bluetooth.git
+```
+
+then
+
+```
+import Bluebooth from 'yourRelativePath/bluetooth/index.js'
 ```
 
 
 ## Example
 
 ```js
-const bluebooth = new Bluetooth(configOptions = {   // configOptions 参考下面的API
+const bluebooth = new Bluetooth({   // configOptions 参考下面的API
   debug: false,
   timeout: 5,
   keepAlive: true,
