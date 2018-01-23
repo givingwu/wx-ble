@@ -4,4 +4,7 @@ callback.js
 build.js
 .DS_Store
 .idea
+.gitignore
+.npmignore
+package.json
 /test
