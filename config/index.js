@@ -8,10 +8,10 @@ const configOptions = {
 
   connectOptions: {
     interval: 0,
-    services: ['0000FFE0-0000-1000-8000-00805F9B34FB'],
+    services: [],
     allowDuplicatesKey: false,
 
-    deviceName: 'Yammii',
+    deviceName: '',
     // characteristicId: '0000FFE1-0000-1000-8000-00805F9B34FB'
   },
 
