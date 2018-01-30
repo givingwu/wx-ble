@@ -10,7 +10,7 @@ export default function init() {
   }
 
   function bluetoothStateHandler(res) {
-    self.config.debug && console.log('W-BLE:into bluetoothStateHandler ', res, self)
+    self.config.debug && console.log('W-BLE:into bluetoothStateHandler ', res)
     const { available, discovering } = res
 
     if (!available) {
@@ -45,6 +45,7 @@ export default function init() {
       .then(res => {
         wx.showToast({ title: '蓝牙初始化成功', duration: 1000 })
         !!!Recording.isOpenedAdapter && (Recording.isOpenedAdapter = true)
+        this.openTimeout()
 
         openBluetoothStateListener()
         getBluetoothAdapterState()

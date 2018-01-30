@@ -3,7 +3,7 @@ import config from 'config/index'
 import Recording from 'utils/recording'
 import triggerCommands from 'utils/trigger'
 import installPromiseify from 'utils/promiseify'
-import { merge, ab2hex, hex2ab, warning, hasSameUUID } from 'utils/index'
+import { merge, isNumber, ab2hex, hex2ab, warning, hasSameUUID } from 'utils/index'
 
 import init from 'states/init'
 import search from 'states/search'
@@ -18,7 +18,6 @@ export default class Bluetooth {
     if (!promisified) installPromiseify.call(Bluetooth.prototype), promisified = true
     this.uuid = Recording.new()
     this.config = merge({}, config, options)
-
     this.currentState = 'start'
     this.states = {
       'start': {
@@ -46,9 +45,26 @@ export default class Bluetooth {
       }
     }
 
-    this.resetState()
     this.trigger = triggerCommands.call(this)
     this.trigger('init')
+  }
+
+  openTimeout () {
+    const { debug, timeout, onTimeout, onFail } = this.config
+    if (!timeout || !isNumber(timeout)) return
+
+    let timeoutId = setTimeout(_ => {
+      let state = this.currentState
+      debug && console.log(`W-BLE:Current state is ${state}`)
+
+      if (!state || (state && ~state.indexOf('error')) || state === 'init' || state === 'search') {
+        onTimeout && onTimeout.call(this)
+        onFail && onFail.call(this)
+        this.resetState()
+      }
+
+      clearTimeout(timeoutId)
+    }, +timeout * 1000)
   }
 
 
@@ -153,6 +169,9 @@ export default class Bluetooth {
       characteristicId: this._characteristic.writeId,
       value: buffer
     }).then(res => {
+      // 如果 keepAlive 为真的话，需要自己手动在 sendData 成功后执行 
+      // `return this.trigger('success', true)` 
+      // 以触发 finish 状态以进入关闭蓝牙连接和适配器操作
       if (this.config.keepAlive) {
         return res
       } else {
@@ -167,6 +186,9 @@ export default class Bluetooth {
     this._characteristic = {}
     Recording.del()
 
+    this.config.debug && console.log('W-BLE: into this.resetState(), Bluetooth instance numbers: ', Recording.get())
+
+    // 不存在 bluetooth 实例并且已打开适配器则关闭 蓝牙适配器
     if (!Recording.get() && Recording.isOpenedAdapter) {
       this.closeBluetoothAdapter().finally(_ => {
         this.currentState = 'start'

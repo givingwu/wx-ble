@@ -20,8 +20,6 @@ export default function search() {
       .catch(error => self.trigger('failure', error, getConnectedBluetoothDevices))
   }
 
-  getConnectedBluetoothDevices()
-
   function startBluetoothDevicesDiscovery() {
     self.startBluetoothDevicesDiscovery(self.config.connectOptions)
       .then(res => res.isDiscovering
@@ -43,6 +41,7 @@ export default function search() {
     })
   }
 
+  getConnectedBluetoothDevices()
 }
 
 search.state = 'search'

@@ -9,7 +9,7 @@ export default function transfer(isValid) {
     const { deviceId, serviceId, characteristicId, value } = res, val = ab2hex(value)
     // self.config.debug && console.log(`WX-BLE:characteristic ${characteristicId} has changed, now is ${val}`)
 
-    onNotify && isFunction(onNotify) && onNotify.call(this, val)
+    onNotify && isFunction(onNotify) && onNotify.call(self, val)
   }
 
   function notifyBLECharacteristicValueChange() {
