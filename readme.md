@@ -2,7 +2,7 @@
 # wx-bluetooth
 
 可能是Github上迄今为止**最适合前端**、**最易用**的微信小程序蓝牙实现。
-
+![bluetooth_screenshot](http://7xrwmf.com1.z0.glb.clouddn.com/wx-bluetooth_screenshot)
 
 ## Features
 
