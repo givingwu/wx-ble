@@ -2,16 +2,17 @@
 # wx-bluetooth
 
 可能是Github上迄今为止**最适合前端**、**最易用**的微信小程序蓝牙实现。
-[iOS bluetooth_screenshot](http://7xrwmf.com1.z0.glb.clouddn.com/wx-bluetooth_screenshot)
+[iOS bluetooth_run_screenshot](http://7xrwmf.com1.z0.glb.clouddn.com/wx-bluetooth_screenshot)
 
 ## Features
 
-+ 简单丰富的API
-+ 支持自动修复连接，重新连接，管理和收集状态
-+ 支持 connect `timeout` 的实现
++ 简单强大的API
++ 使用状态机自动管理状态
++ 支持**自动修复连接**，**重新连接**
++ 支持connect `timeout` **连接超时机制**
 + 支持初始化多个蓝牙实例
 + 支持`connect`,`notify`,`timout`,`fail`回调
-+ 支持`wx.method.paramter.success`方法的 `promisify`
++ 支持`wx.method.paramters.success`方法的`promisify`
 
 
 ## Usage
@@ -33,6 +34,7 @@ import Bluetooth from 'wx-ble'
 ```
 cd yourpoject/utils
 mkdir bluetooth
+cd bluetooth
 git clone https://github.com/GivingWu/wx-bluetooth.git
 ```
 
@@ -46,7 +48,7 @@ import Bluebooth from 'yourRelativePath/bluetooth/index.js'
 ## Example
 
 ```js
-const bluebooth = new Bluetooth({   // configOptions 参考下面的API
+const bluebooth = new Bluetooth({   // configOptions 参考下方的API
   debug: false,
   timeout: 5,
   keepAlive: true,
@@ -87,7 +89,7 @@ const bluebooth = new Bluetooth({   // configOptions 参考下面的API
 | `connectOptions` | `Object`  |        |   [look](#connectOptions)  | `connectOptions` 是一个对象，用来设置**连接蓝牙的配置项**。蓝牙是否能够连接，跟此配置项有莫大关系。 |
 
 
-### [*connectOptions*] 配置项：
+### [connectOptions](/config/index.js#L9) 配置项：
 
 | property name | type     | default value | descripion | details |
 | ------------- | :------: | :-----------: | :--------- | :------ |
@@ -107,9 +109,9 @@ const bluebooth = new Bluetooth({   // configOptions 参考下面的API
 
 ## TODOs
 
-1. ~~timeout~~ [finished](https://github.com/GivingWu/wx-bluetooth/blob/master/index.js#L52)
+1. ~~timeout~~[done](https://github.com/GivingWu/wx-bluetooth/blob/master/index.js#L52)
 2. 欢迎[issue](https://github.com/GivingWu/wx-bluetooth/issues)，将尽力在一周内解决。
-3. 欢迎[pull/reqest](https://github.com/GivingWu/wx-bluetooth/pulls)
+3. 欢迎[pull/request](https://github.com/GivingWu/wx-bluetooth/pulls)
 
 
 ## ChangeLog
