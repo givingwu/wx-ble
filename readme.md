@@ -52,6 +52,14 @@ const bluebooth = new Bluetooth({   // configOptions 参考下方的API
   debug: false,
   timeout: 5,
   keepAlive: true,
+  // ** 必须配置 `connectOptions` 中的 `deviceName` 和 `services` 以匹配你想匹配的蓝牙设备 **
+  connectOptions: {
+    interval: 0,
+    services: [''], // your device services array
+    allowDuplicatesKey: false,
+    deviceName: '', // device name
+    // characteristicId: ''
+  },
   onConnect: function () {
     this.sendData('01').then(res => this.sendData('02')).then(res => this.sendData('03')).then(res => this.trigger('success'))
     // 如果 keepAlive 为真的话，需要自己手动在 sendData 成功后执行 `return this.trigger('success', true)` 以触发 `finish` 状态以进入关闭蓝牙连接和蓝牙适配器操作
@@ -76,7 +84,7 @@ const bluebooth = new Bluetooth({   // configOptions 参考下方的API
 ### [config](/config/index.js) 配置项：
 
 | option name | type      |  parameter  | default value | description |
-| ---------   | :------:  | :---------: | :-----------: | :---------- |
+| ---------   | :------:  | :---------: | :------------ | :---------- |
 | `debug`     | `Boolean` |             |    `true`     | 打开console，debug程序内部状态的变化 |
 | `timeout`   | `Number`  |             |    `10`       | 以`s`(秒)为单位。如果为0，则关闭该项。在蓝牙的连接过程中，若在该 timeout秒时间内无法连接，则进入 `timeout` 回调 |
 | `keepAlive` | `Boolean` |             |    `false`    | 保持蓝牙通讯的连接 |
@@ -86,7 +94,7 @@ const bluebooth = new Bluetooth({   // configOptions 参考下方的API
 | `onNotify`  | `Function` |   value    |               | 收到蓝牙传输过来的值的回调，通过参数`value`查看该值 |
 | `onTimeout` | `Function` |   error    |               | 连接超时的回调函数（连接超时函数若不自定义会自动进入`onFail`函数） |
 | `onFail`    | `Function` |   error    |               | 再重连`maxReconnectTimes`后，会调用连接失败后的回调 |
-| `connectOptions` | `Object`  |        |   [look](#connectOptions)  | `connectOptions` 是一个对象，用来设置**连接蓝牙的配置项**。蓝牙是否能够连接，跟此配置项有莫大关系。 |
+| `connectOptions` | `Object`  |        |   见下面`connectOptions API`  | `connectOptions` 是一个对象，用来设置**连接蓝牙的配置项**。**蓝牙是否能够连接，跟此配置项有莫大关系**。 |
 
 
 ### [connectOptions](/config/index.js#L9) 配置项：
