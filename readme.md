@@ -19,19 +19,19 @@
 
 1. npm:
 
-```
+```js
 npm install wx-ble
 ```
 
 then
 
-```
+```js
 import Bluetooth from 'wx-ble'
 ```
 
 2. 直接下载项目后，在页面引入。**建议将该工具方法放在 `utils` or `vendors` 目录下，并新建名为`bluetooth`的目录后，将文件下载到该目录中**:
 
-```
+```bash
 cd yourpoject/utils
 mkdir bluetooth
 cd bluetooth
@@ -40,7 +40,7 @@ git clone https://github.com/GivingWu/wx-bluetooth.git
 
 then
 
-```
+```js
 import Bluebooth from 'yourRelativePath/bluetooth/index.js'
 ```
 
