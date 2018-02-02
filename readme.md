@@ -117,7 +117,7 @@ const bluebooth = new Bluetooth({   // configOptions 参考下方的API
 
 ## TODOs
 
-1. ~~timeout~~[done](https://github.com/GivingWu/wx-bluetooth/blob/master/index.js#L52)
+1. ~~timeout~~
 2. 欢迎[issue](https://github.com/GivingWu/wx-bluetooth/issues)，将尽力在一周内解决。
 3. 欢迎[pull/request](https://github.com/GivingWu/wx-bluetooth/pulls)
 
