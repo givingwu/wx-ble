@@ -128,6 +128,8 @@ const bluebooth = new Bluetooth({   // configOptions 参考下方的API
 1. finished `timeout` logic.
 2. fixed `resetState` function.
 
+### 2018-2-2
+1. Modified the code of example.
 
 ## License
 
