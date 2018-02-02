@@ -52,7 +52,7 @@ const bluebooth = new Bluetooth({   // configOptions 参考下方的API
   debug: false,
   timeout: 5,
   keepAlive: true,
-  // ** 必须配置 `connectOptions` 中的 `deviceName` 和 `services` 以匹配你想匹配的蓝牙设备 **
+  // 必须配置 `connectOptions` 中的 `deviceName` 和 `services` 以匹配你想匹配的蓝牙设备
   connectOptions: {
     interval: 0,
     services: [''], // your device services array
@@ -61,8 +61,8 @@ const bluebooth = new Bluetooth({   // configOptions 参考下方的API
     // characteristicId: ''
   },
   onConnect: function () {
-    this.sendData('01').then(res => this.sendData('02')).then(res => this.sendData('03')).then(res => this.trigger('success'))
     // 如果 keepAlive 为真的话，需要自己手动在 sendData 成功后执行 `return this.trigger('success', true)` 以触发 `finish` 状态以进入关闭蓝牙连接和蓝牙适配器操作
+    this.sendData('01').then(res => this.sendData('02')).then(res => this.sendData('03')).then(res => this.trigger('success'))
   }
 })
 ```
