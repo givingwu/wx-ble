@@ -17,32 +17,32 @@
 
 ## Usage
 
-1. npm:
++ npm:
 
-```js
-npm install wx-ble
-```
+  ```js
+  npm install wx-ble
+  ```
 
-then
+  then
 
-```js
-import Bluetooth from 'wx-ble'
-```
+  ```js
+  import Bluetooth from 'wx-ble'
+  ```
 
-2. 直接下载项目后，在页面引入。**建议将该工具方法放在 `utils` or `vendors` 目录下，并新建名为`bluetooth`的目录后，将文件下载到该目录中**:
++ 直接下载项目后，在页面引入。**建议将该工具方法放在 `utils` or `vendors` 目录下，并新建名为`bluetooth`的目录后，将文件下载到该目录中**:
 
-```bash
-cd yourpoject/utils
-mkdir bluetooth
-cd bluetooth
-git clone https://github.com/GivingWu/wx-bluetooth.git
-```
+  ```bash
+  cd yourpoject/utils
+  mkdir bluetooth
+  cd bluetooth
+  git clone https://github.com/GivingWu/wx-bluetooth.git
+  ```
 
-then
+  then
 
-```js
-import Bluebooth from 'yourRelativePath/bluetooth/index.js'
-```
+  ```js
+  import Bluebooth from 'yourRelativePath/bluetooth/index.js'
+  ```
 
 
 ## Example
@@ -88,8 +88,8 @@ const bluebooth = new Bluetooth({   // configOptions 参考下方的API
 | `debug`     | `Boolean` |             |    `true`     | 打开console，debug程序内部状态的变化 |
 | `timeout`   | `Number`  |             |    `10`       | 以`s`(秒)为单位。如果为0，则关闭该项。在蓝牙的连接过程中，若在该 timeout秒时间内无法连接，则进入 `timeout` 回调 |
 | `keepAlive` | `Boolean` |             |    `false`    | 保持蓝牙通讯的连接 |
-| `autoFixConnect`| `Boolean` |         |    `true`     | 调用方法失败进入`fail`后将自动重新调用重连 |
-| `maxReconnectTimes`| `Number` |       |    5          | 最大重新连接次数 |
+| `autoFixConnect`| `Boolean` |         |    `true`     | 蓝牙断开后，自动修复蓝牙连接 |
+| `maxReconnectTimes`| `Number` |       |    5          | 最大重连次数 |
 | `onConnect` | `Function` |            |               | 连接成功后的回调，进行传输数据等操作 |
 | `onNotify`  | `Function` |   value    |               | 收到蓝牙传输过来的值的回调，通过参数`value`查看该值 |
 | `onTimeout` | `Function` |   error    |               | 连接超时的回调函数（连接超时函数若不自定义会自动进入`onFail`函数） |
@@ -111,8 +111,8 @@ const bluebooth = new Bluetooth({   // configOptions 参考下方的API
 ### 实例方法
 | method name |  parameter  | default value |   return   | description |
 | ----------- | :---------: | :-----------: | :--------: | :---------- |
-| `sendData`  |  `data`     | `''`          | {Promise}  | 向已连接的蓝牙发送数据(该方法必须在蓝牙连接成功后调用) |
-| `resetState`|             |               |            | 清空并重置内部状态 |
+| `sendData`  |  `data`     | `''`          | {Promise}  | 向已连接的蓝牙设备发送数据(该方法必须在蓝牙连接成功后调用) |
+| `resetState`|             |               |            | 清空和重置内部状态，关闭蓝牙连接，如果不再存在蓝牙实例，则关闭蓝牙适配器 |
 
 
 ## TODOs
@@ -121,7 +121,7 @@ const bluebooth = new Bluetooth({   // configOptions 参考下方的API
 2. 欢迎[issue](https://github.com/GivingWu/wx-bluetooth/issues)
 3. 欢迎[pull/request](https://github.com/GivingWu/wx-bluetooth/pulls)
 4. 如果`API`有不甚清晰的地方，请[issue](https://github.com/GivingWu/wx-bluetooth/issues)
-5. If it is useful for u, give a star to this project and me to make me has more passion to update it, Thanks!
+5. If it is useful for u, please give me a star to make me has more passion to update it, Thanks!
 
 
 ## ChangeLog
@@ -135,6 +135,7 @@ const bluebooth = new Bluetooth({   // configOptions 参考下方的API
 
 ### 2018-2-5
 1. Updated the TODOs of this doc.
+2. Mofified API doc.
 
 ## License
 
