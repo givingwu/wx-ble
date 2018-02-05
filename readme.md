@@ -118,8 +118,10 @@ const bluebooth = new Bluetooth({   // configOptions 参考下方的API
 ## TODOs
 
 1. ~~timeout~~
-2. 欢迎[issue](https://github.com/GivingWu/wx-bluetooth/issues)，将尽力在一周内解决。
+2. 欢迎[issue](https://github.com/GivingWu/wx-bluetooth/issues)
 3. 欢迎[pull/request](https://github.com/GivingWu/wx-bluetooth/pulls)
+4. 如果`API`有不甚清晰的地方，请[issue](https://github.com/GivingWu/wx-bluetooth/issues)
+5. If it is useful for u, give a star to this project and me to make me has more passion to update it, Thanks!
 
 
 ## ChangeLog
@@ -130,6 +132,9 @@ const bluebooth = new Bluetooth({   // configOptions 参考下方的API
 
 ### 2018-2-2
 1. Modified the code of example.
+
+### 2018-2-5
+1. Updated the TODOs of this doc.
 
 ## License
 
