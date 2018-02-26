@@ -8,6 +8,8 @@ export default function search() {
         const { devices } = res
 
         if (devices && devices.length) {
+          self.config.debug && console.log(devices)
+
           if (self.checkDevicesWhetherMatch(devices, true)) {
             self.trigger('success')
           } else {

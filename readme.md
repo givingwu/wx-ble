@@ -47,6 +47,8 @@
 
 ## Example
 
+注： 如果`keepAlive`配置项为`true`的话，需要手动在 `sendData` 方法成功`then`后写上 `return this.trigger('success', true)` 以触发 `finish` 。
+
 ```js
 const bluebooth = new Bluetooth({   // configOptions 参考下方的API
   debug: false,
@@ -61,7 +63,7 @@ const bluebooth = new Bluetooth({   // configOptions 参考下方的API
     // characteristicId: ''
   },
   onConnect: function () {
-    // 如果 keepAlive 为真的话，需要自己手动在 sendData 成功后执行 `return this.trigger('success', true)` 以触发 `finish` 状态以进入关闭蓝牙连接和蓝牙适配器操作
+    // 如果 keepAlive 为`true`的话，需要自己手动在 sendData 成功后执行 `return this.trigger('success', true)` 以触发 `finish` 状态以进入关闭蓝牙连接和蓝牙适配器操作
     this.sendData('01').then(res => this.sendData('02')).then(res => this.sendData('03')).then(res => this.trigger('success'))
   }
 })

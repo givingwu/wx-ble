@@ -2,7 +2,7 @@
 import Recording from '../utils/recording'
 
 export default function init() {
-  wx.showToast({ title: '初始化适配器', icon: 'loading' })
+  wx.showToast({ title: '初始化蓝牙中', icon: 'loading' })
   const self = this
 
   function openBluetoothStateListener() {

@@ -169,8 +169,8 @@ export default class Bluetooth {
       characteristicId: this._characteristic.writeId,
       value: buffer
     }).then(res => {
-      // 如果 keepAlive 为真的话，需要自己手动在 sendData 成功后执行 
-      // `return this.trigger('success', true)` 
+      // 如果 keepAlive 为真的话，需要自己手动在 sendData 成功后执行
+      // `return this.trigger('success', true)`
       // 以触发 finish 状态以进入关闭蓝牙连接和适配器操作
       if (this.config.keepAlive) {
         return res
