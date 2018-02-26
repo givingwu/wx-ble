@@ -46,10 +46,15 @@ export default class Bluetooth {
     }
 
     this.trigger = triggerCommands.call(this)
+    this.config.autoConnect && this.start()
+  }
+
+  start () {
     this.trigger('init')
   }
 
   openTimeout () {
+    // console.log(' this method openTimeout be called. ')
     const { debug, timeout, onTimeout, onFail } = this.config
     if (!timeout || !isNumber(timeout)) return
 

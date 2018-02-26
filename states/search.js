@@ -1,4 +1,6 @@
 
+import { isFunction } from '../utils/index'
+
 export default function search() {
   const self = this
 
@@ -34,6 +36,7 @@ export default function search() {
     self.onBluetoothDeviceFound(res => {
       self.config.debug && console.log('WX-BLE:into self.onBluetoothDeviceFound ', res)
       const { devices } = res
+      isFunction(self.config.onFound) && self.config.onFound.call(this, devices)
 
       if (devices && devices.length) {
         if (self.checkDevicesWhetherMatch(devices)) {

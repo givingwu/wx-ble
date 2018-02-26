@@ -1,7 +1,7 @@
 
 /**
   * polyfill
-  * Promise.finally(callback)
+  * Promise.prototype.finally(callback)
   */
 if (Promise instanceof Function) {
   Promise.prototype.finally = function (callback) {
@@ -31,11 +31,11 @@ export const isBoolean = function (str) {
 }
 
 export const isFunction = function (fn) {
-  return typeof fn === 'function'
+  return fn && typeof fn === 'function'
 }
 
 export const isObject = function (obj) {
-  return typeof obj === 'object'
+  return obj && typeof obj === 'object'
 }
 
 export const isUndefined = function (any) {
@@ -43,17 +43,18 @@ export const isUndefined = function (any) {
 }
 
 export const isArray = function (arr) {
-  return Array.isArray(arr) || Object.prototype.toString.call(arr) === '[object Array]'
+  return arr && (Array.isArray(arr) || Object.prototype.toString.call(arr) === '[object Array]')
 }
 
 export const isNotEmptyObj = function (obj) {
-  return obj && isObject(obj) && ((0, Object.keys || Object.getOwnPropertyNames)(obj).length)
+  return isObject(obj) && ((0, Object.keys || Object.getOwnPropertyNames)(obj).length)
 }
 
 
 export const merge = function () {
   return Object.assign(...arguments) || (function (args) {
     target = args[0]
+
     for (let i = 1, j = args.length; i < j; i++) {
       let source = args[i] || {};
 

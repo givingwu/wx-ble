@@ -87,11 +87,13 @@ const bluebooth = new Bluetooth({   // configOptions 参考下方的API
 
 | option name | type      |  parameter  | default value | description |
 | ---------   | :------:  | :---------: | :------------ | :---------- |
+| `autoConnect`| `Boolean`|             |    `false`     | 初始化实例时完成后自动根据 `connenctOptions` 连接蓝牙，否者手动调用实例的 `start` 方法 |
 | `debug`     | `Boolean` |             |    `true`     | 打开console，debug程序内部状态的变化 |
 | `timeout`   | `Number`  |             |    `10`       | 以`s`(秒)为单位。如果为0，则关闭该项。在蓝牙的连接过程中，若在该 timeout秒时间内无法连接，则进入 `timeout` 回调 |
 | `keepAlive` | `Boolean` |             |    `false`    | 保持蓝牙通讯的连接 |
 | `autoFixConnect`| `Boolean` |         |    `true`     | 蓝牙断开后，自动修复蓝牙连接 |
 | `maxReconnectTimes`| `Number` |       |    5          | 最大重连次数 |
+| `onFound`   | `Function` | `devices`  |    `[]`       | 当蓝牙发现新设备时，接收第一个参数 `devices` 获取所有设备 |
 | `onConnect` | `Function` |            |               | 连接成功后的回调，进行传输数据等操作 |
 | `onNotify`  | `Function` |   value    |               | 收到蓝牙传输过来的值的回调，通过参数`value`查看该值 |
 | `onTimeout` | `Function` |   error    |               | 连接超时的回调函数（连接超时函数若不自定义会自动进入`onFail`函数） |
@@ -113,6 +115,7 @@ const bluebooth = new Bluetooth({   // configOptions 参考下方的API
 ### 实例方法
 | method name |  parameter  | default value |   return   | description |
 | ----------- | :---------: | :-----------: | :--------: | :---------- |
+| `start`     |             |               |            | 手动开启该实例对象的蓝牙连接 |
 | `sendData`  |  `data`     | `''`          | {Promise}  | 向已连接的蓝牙设备发送数据(该方法必须在蓝牙连接成功后调用) |
 | `resetState`|             |               |            | 清空和重置内部状态，关闭蓝牙连接，如果不再存在蓝牙实例，则关闭蓝牙适配器 |
 

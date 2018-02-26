@@ -11,8 +11,9 @@ export default function triggerCommands() {
   return function changeState(name) {
     const state = this.currentState
     let action = this.states[state][name]
-
-    console.log(`W-TGR:Trying to change state from '${state}.${name}' to '${'function' === typeof action ? action.state : action}'`)
+''
+    this.config.debug && console.log(`W-TGR:Trying to change state from '${state}.${name}' to '${'function' === typeof action ? action.state : action}' state.`)
+    // this.config.debug && console.log(`state: ${state}, \nname:${name}, \naction:${'function' === typeof action ? action.state : action}`)
 
     if (action) {
       if ('string' === typeof action && ~action.indexOf('error')) action = errors[action.split('.')[1]]
@@ -30,11 +31,13 @@ export default function triggerCommands() {
       try {
         action.apply(this, arguments)
 
-        // if (name != 'failure') {
+        if (state === 'init' && name === 'failure') {
+          this.currentState = 'start'
+        } else {
           this.currentState = action.state
-        // }
+        }
 
-        console.log(`W-TGR:Change state success, Previous state:${state}, Be called mehtod name: ${name === 'failure' ? 'errors.' + name : name}, Current state: ${this.currentState}`)
+        this.config.debug && console.log(`W-TGR:Change state success, Previous state:${state}, Be called mehtod name: ${name === 'failure' ? 'errors.' + state : name}, Current state: ${this.currentState}`)
       } catch (error) {
         console.error(error, `W-TGR:at action:${action} - name:${name}. `)
         this.currentState = state

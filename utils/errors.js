@@ -13,7 +13,7 @@ export default {
     error && warning(error)
 
     wx.hideToast()
-    wx.showModal({ title: '蓝牙初始化失败', content: '请确认是否在设备设置中已打开蓝牙开关', showCancel: false })
+    wx.showModal({ title: '蓝牙初始化失败', content: '请检查设备设置是否已打开蓝牙开关', showCancel: false })
 
     callback && callback()
   },

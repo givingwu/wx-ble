@@ -15,12 +15,14 @@ export default function init() {
 
     if (!available) {
       wx.hideToast()
-      wx.showModal({ title: '无法开启蓝牙连接', content: '请检查设备蓝牙连接是否正常', showCancel: false })
+      wx.showModal({ title: '设备蓝牙不可用', content: '请检查设备蓝牙是否打开', showCancel: false })
     } else {
       if (discovering) {
         self._discovering = true
+        self.openTimeout()
       } else {
         self._discovering = false
+        // wx.showModal({ title: '蓝牙搜索状态被关闭', content: '请检查设备蓝牙是否正常', showCancel: false })
 
         if (self.currentState !== 'init') {
           self.currentState = 'init'
@@ -45,7 +47,6 @@ export default function init() {
       .then(res => {
         wx.showToast({ title: '蓝牙初始化成功', duration: 1000 })
         !!!Recording.isOpenedAdapter && (Recording.isOpenedAdapter = true)
-        this.openTimeout()
 
         openBluetoothStateListener()
         getBluetoothAdapterState()
