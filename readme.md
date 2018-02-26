@@ -11,7 +11,7 @@
 + 支持**自动修复连接**，**重新连接**
 + 支持connect `timeout` **连接超时机制**
 + 支持初始化多个蓝牙实例
-+ 支持`connect`,`notify`,`timout`,`fail`回调
++ 支持`found`,`connect`,`notify`,`timout`,`fail`回调
 + 支持`wx.method.paramters.success`方法的`promisify`
 
 
@@ -141,6 +141,10 @@ const bluebooth = new Bluetooth({   // configOptions 参考下方的API
 ### 2018-2-5
 1. Updated the TODOs of this doc.
 2. Mofified API doc.
+
+### 2018-2-26
+1. add a new config option `autoConnect`
+2. add new callback function `onFound`
 
 ## License
 
