@@ -4,6 +4,22 @@
 可能是Github上迄今为止**最适合前端**、**最易用**的微信小程序蓝牙实现。
 [iOS bluetooth_run_screenshot](http://7xrwmf.com1.z0.glb.clouddn.com/wx-bluetooth_screenshot)
 
+**Contents**:
+
+- [Features](#Features)
+- [Usage](#Usage)
+- [Example](#Example)
+- [实现](#实现)
+- [API](#API)
+    - [config](#config)
+    - [connectOptions](#connectOptions)
+    - [实例方法](#实例方法)
+- [TODOs](#TODOs)
+- [ChangeLog](#ChangeLog)
+- [License](#License)
+
+
+<a name="#Features"></a>
 ## Features
 
 + 简单强大的API
@@ -14,7 +30,7 @@
 + 支持`found`,`connect`,`notify`,`timout`,`fail`回调
 + 支持`wx.method.paramters.success`方法的`promisify`
 
-
+<a name="#Usage"></a>
 ## Usage
 
 + npm:
@@ -44,7 +60,7 @@
   import Bluebooth from 'yourRelativePath/bluetooth/index.js'
   ```
 
-
+<a name="#Example"></a>
 ## Example
 
 注： 如果`keepAlive`配置项为`true`的话，需要手动在 `sendData` 方法成功`then`后写上 `return this.trigger('success', true)` 以触发 `finish` 。
@@ -69,7 +85,7 @@ const bluebooth = new Bluetooth({   // configOptions 参考下方的API
 })
 ```
 
-
+<a name="#实现"></a>
 ## 实现
 
 通过[triggerCommands](/utils/trigger.js)触发`success` or `failure`进入成功或失败状态。
@@ -80,9 +96,10 @@ const bluebooth = new Bluetooth({   // configOptions 参考下方的API
 4. [通信-transfer](/states/transfer.js)
 5. [结束-finish](/states/finish.js)
 
-
+<a name="#API"></a>
 ## API
 
+<a name="#config"></a>
 ### [config](/config/index.js) 配置项：
 
 | option name | type      |  parameter  | default value | description |
@@ -100,7 +117,7 @@ const bluebooth = new Bluetooth({   // configOptions 参考下方的API
 | `onFail`    | `Function` |   error    |               | 再重连`maxReconnectTimes`后，会调用连接失败后的回调 |
 | `connectOptions` | `Object`  |        |   见下面`connectOptions API`  | `connectOptions` 是一个对象，用来设置**连接蓝牙的配置项**。**蓝牙是否能够连接，跟此配置项有莫大关系**。 |
 
-
+<a name="#connectOptions"></a>
 ### [connectOptions](/config/index.js#L9) 配置项：
 
 | property name | type     | default value | descripion | details |
@@ -111,7 +128,7 @@ const bluebooth = new Bluetooth({   // configOptions 参考下方的API
 | `deviceName` | `String`  | `''`          | 通过该项匹配当前设备，如果设备名称包含该字段，则认为匹配 |     |
 | `characteristicId` | `String`  | `''`    | 该项目前未使用 |     |
 
-
+<a name="#实例方法"></a>
 ### 实例方法
 | method name |  parameter  | default value |   return   | description |
 | ----------- | :---------: | :-----------: | :--------: | :---------- |
@@ -119,7 +136,7 @@ const bluebooth = new Bluetooth({   // configOptions 参考下方的API
 | `sendData`  |  `data`     | `''`          | {Promise}  | 向已连接的蓝牙设备发送数据(该方法必须在蓝牙连接成功后调用) |
 | `resetState`|             |               |            | 清空和重置内部状态，关闭蓝牙连接，如果不再存在蓝牙实例，则关闭蓝牙适配器 |
 
-
+<a name="#TODOs"></a>
 ## TODOs
 
 1. ~~timeout~~
@@ -128,7 +145,7 @@ const bluebooth = new Bluetooth({   // configOptions 参考下方的API
 4. 如果`API`有不甚清晰的地方，请[issue](https://github.com/GivingWu/wx-bluetooth/issues)
 5. If it is useful for u, please give me a star to make me has more passion to update it, Thanks!
 
-
+<a name="#ChangeLog"></a>
 ## ChangeLog
 
 ### 2018-1-30
@@ -146,6 +163,7 @@ const bluebooth = new Bluetooth({   // configOptions 参考下方的API
 1. add a new config option `autoConnect`
 2. add new callback function `onFound`
 
+<a name="#License"></a>
 ## License
 
 [MIT](http://opensource.org/licenses/MIT)
