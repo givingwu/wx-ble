@@ -11,7 +11,7 @@ export default function triggerCommands() {
   return function changeState(name) {
     const state = this.currentState
     let action = this.states[state][name]
-''
+
     this.config.debug && console.log(`W-TGR:Trying to change state from '${state}.${name}' to '${'function' === typeof action ? action.state : action}' state.`)
     // this.config.debug && console.log(`state: ${state}, \nname:${name}, \naction:${'function' === typeof action ? action.state : action}`)
 
