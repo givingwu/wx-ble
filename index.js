@@ -1,9 +1,15 @@
-
 import config from 'config/index'
 import Recording from 'utils/recording'
 import triggerCommands from 'utils/trigger'
 import installPromiseify from 'utils/promiseify'
-import { merge, isNumber, ab2hex, hex2ab, warning, hasSameUUID } from 'utils/index'
+import {
+  merge,
+  isNumber,
+  ab2hex,
+  hex2ab,
+  warning,
+  hasSameUUID
+} from 'utils/index'
 
 import init from 'states/init'
 import search from 'states/search'
@@ -49,13 +55,18 @@ export default class Bluetooth {
     this.config.autoConnect && this.start()
   }
 
-  start () {
+  start() {
     this.trigger('init')
   }
 
-  openTimeout () {
+  openTimeout() {
     // console.log(' this method openTimeout be called. ')
-    const { debug, timeout, onTimeout, onFail } = this.config
+    const {
+      debug,
+      timeout,
+      onTimeout,
+      onFail
+    } = this.config
     if (!timeout || !isNumber(timeout)) return
 
     let timeoutId = setTimeout(_ => {
@@ -75,14 +86,19 @@ export default class Bluetooth {
 
   // 开发者工具和 Android 上获取到的deviceId为设备 MAC 地址，iOS 上则为设备 uuid。因此deviceId不能硬编码到代码中
   checkDevicesWhetherMatch(devices, isConnected) {
-    const self = this, { deviceName, services, characteristicId } = this.config.connectOptions
+    const self = this,
+      {
+        deviceName,
+        services,
+        characteristicId
+      } = this.config.connectOptions
     let isMatch = null
 
     for (let i = 0, l = devices.length; i < l; i++) {
       devices[i].advertisData && console.log(ab2hex(devices[i].advertisData))
       const UUIDs = devices[i].advertisServiceUUIDs
 
-      if (devices[i].name === deviceName || devices[i].localName === deviceName || (services.length && UUIDs && UUIDs.length && hasSameUUID(services, UUIDs))) {
+      if ((devices[i].name === deviceName || devices[i].localName === deviceName) && (services.length && UUIDs && UUIDs.length && hasSameUUID(services, UUIDs))) {
         isConnected && (this._connected = true)
         this._device = devices[i]
         isMatch = true
@@ -106,11 +122,16 @@ export default class Bluetooth {
 
 
   checkDeviceServices(res) {
-    const { services } = res, configServices = this.config.connectOptions.services
+    const {
+      services
+    } = res, configServices = this.config.connectOptions.services
     let isValid = false
 
     for (let i = 0, l = services.length; i < l; i++) {
-      const { uuid, isPrimary } = services[i]
+      const {
+        uuid,
+        isPrimary
+      } = services[i]
 
       if (~configServices.indexOf(services[i].uuid)) {
         this._serviceId = uuid
@@ -128,13 +149,23 @@ export default class Bluetooth {
 
 
   checkDeviceCharacteristics(res) {
-    const { characteristics } = res
+    const {
+      characteristics
+    } = res
 
     if (characteristics && characteristics.length) {
       this._characteristics = characteristics
 
       for (let i = 0, l = characteristics.length; i < l; i++) {
-        const { properties, uuid } = characteristics[i], { read, write, notify, indicate } = properties
+        const {
+          properties,
+          uuid
+        } = characteristics[i], {
+          read,
+          write,
+          notify,
+          indicate
+        } = properties
 
         if (read) this._characteristic.readId = uuid
         if (write) this._characteristic.writeId = uuid
@@ -146,7 +177,10 @@ export default class Bluetooth {
     if (!this._characteristic.writeId || !this._characteristic.notifyId) {
       throw new Error(`This device ${this._device.name || this._device.localName} does not support 'write' or 'notify' characteristic.`)
     } else {
-      wx.showToast({ title: '获取特征值成功', duration: 2000 })
+      wx.showToast({
+        title: '获取特征值成功',
+        duration: 2000
+      })
     }
 
     return true
