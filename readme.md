@@ -102,9 +102,9 @@ const bluebooth = new Bluetooth({   // configOptions 参考下方的API
 
 | option name | type      |  parameter  | default value | description |
 | ---------   | :------:  | :---------: | :------------ | :---------- |
-| `autoConnect`| `Boolean`|             |    `false`     | 初始化实例时完成后自动根据 `connenctOptions` 连接蓝牙，否者手动调用实例的 `start` 方法 |
+| `autoConnect`| `Boolean`|             |    `false`    | 初始化实例时完成后自动根据 `connenctOptions` 连接蓝牙，否者手动调用实例的 `start` 方法 |
 | `debug`     | `Boolean` |             |    `true`     | 打开console，debug程序内部状态的变化 |
-| `timeout`   | `Number`  |             |    `10`       | 以`s`(秒)为单位。如果为0，则关闭该项。在蓝牙的连接过程中，若在该 timeout秒时间内无法连接，则进入 `timeout` 回调 |
+| `timeout`   | `Number`  |             |    `false`       | 以`s`(秒)为单位。在蓝牙的连接过程中，若在该 timeout 秒时间内无法连接，则进入 `timeout` 回调。如果为0 or false，则关闭该项。|
 | `keepAlive` | `Boolean` |             |    `false`    | 保持蓝牙通讯的连接 |
 | `autoFixConnect`| `Boolean` |         |    `true`     | 蓝牙断开后，自动修复蓝牙连接 |
 | `maxReconnectTimes`| `Number` |       |    5          | 最大重连次数 |

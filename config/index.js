@@ -2,7 +2,7 @@
 const configOptions = {
   autoConnect: false,
   debug: true,
-  timeout: 6,  // seconds
+  timeout: false,  // seconds
   keepAlive: false,
   autoFixConnect: true,
   maxReconnectTimes: 5,
