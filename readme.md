@@ -46,10 +46,8 @@
 + 直接下载项目后，在页面引入。**建议将该工具方法放在 `utils` or `vendors` 目录下，并新建名为`bluetooth`的目录后，将文件下载到该目录中**:
 
   ```bash
-  cd yourpoject/utils
-  mkdir bluetooth
-  cd bluetooth
-  git clone https://github.com/GivingWu/wx-bluetooth.git
+  cd ProjectPath/utils
+  git clone https://github.com/vuchan/wx-bluetooth.git
   ```
 
   then
