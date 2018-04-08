@@ -56,6 +56,10 @@ export default class Bluetooth {
   }
 
   start() {
+    if (this.currentState !== 'start') {
+      this.currentState = 'start'
+    }
+
     this.trigger('init')
   }
 

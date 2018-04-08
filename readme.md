@@ -159,6 +159,10 @@ const bluebooth = new Bluetooth({   // configOptions 参考下方的API
 1. add a new config option `autoConnect`
 2. add new callback function `onFound`
 
+### 2018-4-08
+1. fixed the `timeout` method will be auto set off at `init` state `bluetoothStateHandler` function.
+2. add a fallback feature to the `start` function.
+
 <a name="License"></a>
 ## License
 

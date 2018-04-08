@@ -10,8 +10,10 @@ export default function init() {
   }
 
   function bluetoothStateHandler(res) {
-    self.config.debug && console.log('W-BLE:into bluetoothStateHandler ', res)
+    const { debug, timeout } = self.config;
     const { available, discovering } = res
+
+    debug && console.log('W-BLE:into bluetoothStateHandler ', res)
 
     if (!available) {
       wx.hideToast()
@@ -19,7 +21,7 @@ export default function init() {
     } else {
       if (discovering) {
         self._discovering = true
-        self.openTimeout()
+        timeout && self.openTimeout()
       } else {
         self._discovering = false
         // wx.showModal({ title: '蓝牙搜索状态被关闭', content: '请检查设备蓝牙是否正常', showCancel: false })
