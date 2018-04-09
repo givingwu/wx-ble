@@ -79,6 +79,8 @@ const bluebooth = new Bluetooth({   // configOptions 参考下方的API
     this.sendData('01').then(res => this.sendData('02')).then(res => this.sendData('03')).then(res => this.trigger('success'))
   }
 })
+
+bluebooth.start();
 ```
 
 <a name="实现"></a>
@@ -135,11 +137,9 @@ const bluebooth = new Bluetooth({   // configOptions 参考下方的API
 <a name="TODOs"></a>
 ## TODOs
 
-1. ~~timeout~~
-2. 欢迎[issue](https://github.com/GivingWu/wx-bluetooth/issues)
-3. 欢迎[pull/request](https://github.com/GivingWu/wx-bluetooth/pulls)
-4. 如果`API`有不甚清晰的地方，请[issue](https://github.com/GivingWu/wx-bluetooth/issues)
-5. If it is useful for u, please give me a star to make me has more passion to update it, Thanks!
+1. 欢迎[issue](https://github.com/GivingWu/wx-bluetooth/issues)
+2. 欢迎[pull/request](https://github.com/GivingWu/wx-bluetooth/pulls)
+3. 如果`API`有不甚清晰的地方，请[issue](https://github.com/GivingWu/wx-bluetooth/issues)
 
 <a name="ChangeLog"></a>
 ## ChangeLog
@@ -160,7 +160,7 @@ const bluebooth = new Bluetooth({   // configOptions 参考下方的API
 2. add new callback function `onFound`
 
 ### 2018-4-08
-1. fixed the `timeout` method will be auto set off at `init` state `bluetoothStateHandler` function.
+1. fixed the `timeout` method will be auto trigger at `init` state `bluetoothStateHandler` function.
 2. add a fallback feature to the `start` function.
 
 <a name="License"></a>
