@@ -64,8 +64,7 @@
 ```js
 const bluebooth = new Bluetooth({   // configOptions 参考下方的API
   debug: false,
-  timeout: 5,
-  keepAlive: true,
+  keepAlive: true,    // 保持持续链接状态
   // 必须配置 `connectOptions` 中的 `deviceName` 和 `services` 以匹配你想匹配的蓝牙设备
   connectOptions: {
     interval: 0,
@@ -102,7 +101,7 @@ const bluebooth = new Bluetooth({   // configOptions 参考下方的API
 | ---------   | :------:  | :---------: | :------------ | :---------- |
 | `autoConnect`| `Boolean`|             |    `false`    | 初始化实例时完成后自动根据 `connenctOptions` 连接蓝牙，否者手动调用实例的 `start` 方法 |
 | `debug`     | `Boolean` |             |    `true`     | 打开console，debug程序内部状态的变化 |
-| `timeout`   | `Number`  |             |    `false`       | 以`s`(秒)为单位。在蓝牙的连接过程中，若在该 timeout 秒时间内无法连接，则进入 `timeout` 回调。如果为0 or false，则关闭该项。|
+| `timeout`   | `Number`  |             |    `false`       | 以`s`(秒)为单位。在蓝牙的连接过程中，若在该 timeout 秒时间内无法连接，则进入 `timeout` 回调。如果为`0 or false`，则关闭该项。|
 | `keepAlive` | `Boolean` |             |    `false`    | 保持蓝牙通讯的连接 |
 | `autoFixConnect`| `Boolean` |         |    `true`     | 蓝牙断开后，自动修复蓝牙连接 |
 | `maxReconnectTimes`| `Number` |       |    5          | 最大重连次数 |
@@ -135,11 +134,9 @@ const bluebooth = new Bluetooth({   // configOptions 参考下方的API
 <a name="TODOs"></a>
 ## TODOs
 
-1. ~~timeout~~
-2. 欢迎[issue](https://github.com/GivingWu/wx-bluetooth/issues)
-3. 欢迎[pull/request](https://github.com/GivingWu/wx-bluetooth/pulls)
-4. 如果`API`有不甚清晰的地方，请[issue](https://github.com/GivingWu/wx-bluetooth/issues)
-5. If it is useful for u, please give me a star to make me has more passion to update it, Thanks!
+1. 欢迎[issue](https://github.com/GivingWu/wx-bluetooth/issues)
+2. 欢迎[pull/request](https://github.com/GivingWu/wx-bluetooth/pulls)
+3. 如果`API`有不甚清晰的地方，请[issue](https://github.com/GivingWu/wx-bluetooth/issues)
 
 <a name="ChangeLog"></a>
 ## ChangeLog
