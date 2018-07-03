@@ -1,6 +1,9 @@
 # NOTES:
 > 目前时间很紧，对于无法作出及时回应的issue表示抱歉。同时对于此项目的维护时间也很有限，非常抱歉。使用时请**慎重**翻阅之前 `issue`，同时欢迎大家`PR`！
 
+[![wx-ble](https://nodei.co/npm/wx-ble.png)](https://npmjs.org/package/wx-ble)
+
+
 # wx-bluetooth
 
 可能是Github上迄今为止**最适合前端**、**最易用**的微信小程序蓝牙实现。
