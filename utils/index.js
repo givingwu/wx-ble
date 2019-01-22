@@ -116,9 +116,8 @@ export function hex2ab(str) {
   let pos = 0;
   for (var i = 0, len = str.length; i < len; i += 2) {
     let code = parseInt(str.substr(i, 2), 16)
-
-    dataView.setUint8(pos, code)
     pos++
+    dataView.setUint8(pos, code)
   }
 
   return buffer;
