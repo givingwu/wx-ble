@@ -3,7 +3,7 @@
   * polyfill
   * Promise.prototype.finally(callback)
   */
-if (Promise instanceof Function) {
+if (Promise instanceof Function && !Promise.prototype.finally) {
   Promise.prototype.finally = function (callback) {
     return this.then(
       value => Promise.resolve(callback()).then(() => value),
