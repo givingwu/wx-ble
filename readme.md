@@ -146,29 +146,7 @@ bluebooth.start();
 2. 欢迎[pull/request](https://github.com/vuchan/wx-bluetooth/pulls)
 3. 如果`API`有不甚清晰的地方，请[issue](https://github.com/vuchan/wx-bluetooth/issues)
 
-<a name="ChangeLog"></a>
-## ChangeLog
-
-### 2018-1-30
-1. finished `timeout` logic.
-2. fixed `resetState` function.
-
-### 2018-2-2
-1. Modified the code of example.
-
-### 2018-2-5
-1. Updated the TODOs of this doc.
-2. Modified API doc.
-
-### 2018-2-26
-1. add a new config option `autoConnect`
-2. add new callback function `onFound`
-
-### 2018-4-08
-1. fixed the `timeout` method will be auto trigger at `init` state `bluetoothStateHandler` function.
-2. add a fallback feature to the `start` function.
-
 <a name="License"></a>
 ## License
+[MIT](http://opensource.org/licenses/MIT) with [996ICU](https://github.com/996icu/996.ICU/blob/master/licenses%5BWIP%5D/LICENSE-MIT-996)
 
-[MIT](http://opensource.org/licenses/MIT)
