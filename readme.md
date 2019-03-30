@@ -7,6 +7,11 @@
 
 # wx-bluetooth
 
+[![NPM Version][npm-image]][npm-url]
+[![NPM Downloads][downloads-image]][npm-url]
+[![996ICU license][996ICU-license]][996ICU-license]
+
+
 可能是Github上迄今为止**最适合前端**、**最易用**的微信小程序蓝牙实现。
 [iOS bluetooth_run_screenshot](http://7xrwmf.com1.z0.glb.clouddn.com/wx-bluetooth_screenshot)
 
@@ -145,6 +150,11 @@ bluebooth.start();
 1. 欢迎[issue](https://github.com/vuchan/wx-bluetooth/issues)
 2. 欢迎[pull/request](https://github.com/vuchan/wx-bluetooth/pulls)
 3. 如果`API`有不甚清晰的地方，请[issue](https://github.com/vuchan/wx-bluetooth/issues)
+
+[npm-image]: https://img.shields.io/npm/v/wx-ble.svg
+[npm-url]: https://npmjs.org/package/wx-ble
+[downloads-image]: https://img.shields.io/npm/dm/wx-ble.svg
+[996ICU-license]: https://img.shields.io/badge/support-996.icu-red.svg
 
 <a name="License"></a>
 ## License
